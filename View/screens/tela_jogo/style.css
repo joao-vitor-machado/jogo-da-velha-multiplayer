@@ -32,7 +32,8 @@ header{
 
 
 section{
-    height: 65vh;
+    height: 75vh;
+    flex-direction: column;
 }
 
 td{
@@ -40,7 +41,7 @@ td{
 }
 
 td + td, th + th { 
-    height: 12rem;
+    height: 11rem;
     border-left: 5px solid white; 
 }
 tr + tr { 
@@ -48,11 +49,12 @@ tr + tr {
 }
 
 .button{
-    position: absolute;
-    
+    height: 15vh;
+    margin-left: 2rem;
 }
 
 .button a {  
     width: 13rem;
     height: 5rem;
+    
 }
