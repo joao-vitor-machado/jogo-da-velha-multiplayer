@@ -30,7 +30,7 @@ divImagemResultado.id = "div-imagem-resultado";
 var imgWinner = document.createElement("img");
 imgWinner.id = "img-winner";
 
-
+//Selecionando a imagem correta
 switch (numeroResultado) {
     case 1:
         imgWinner.src = "../../shared/imgs/o.svg";
@@ -49,6 +49,7 @@ switch (numeroResultado) {
  botaoJogarNovamente.className = "button";
  botaoSair.className = "button";
 
+ //Montando o botão de sair do jogo e fazendo as alterações CSS
  var a = document.createElement("a");
  var span = document.createElement("span");
  a.href = "../index.html";
@@ -57,36 +58,29 @@ switch (numeroResultado) {
  botaoSair.appendChild(a);
  botaoSair.style = "margin-top: 120px;";
 
+//Montando o botão de Jogar Novamente e fazendo as alterações CSS
  var a2 = document.createElement("a");
  var span2 = document.createElement("span");
  a2.href = "./tela_jogo.html";
  a2.style = "width: 300px; height: 100px"
  span2.textContent = "Jogar Novamente";
  span2.style = "text-align: center;";
-
  a2.appendChild(span2);
  botaoJogarNovamente.appendChild(a2);
 
- 
-
-
-// var botaoJogarNovamente = document.createElement("button");
-// botaoJogarNovamente.textContent = "Jogar Novamente";
-
-// var botaoSair = document.createElement("button");
-// botaoSair.textContent = "Sair";
-
+//Criando a div onde ficarão os botões e adicionando eles a ela
 var divBtns = document.createElement("div");
 divBtns.id = "div-btns";
 divBtns.appendChild(botaoJogarNovamente);
 divBtns.appendChild(botaoSair);
 
+//Inserindo todos os elementos ao popup
 div.appendChild(resultado);
 divImagemResultado.appendChild(imgWinner);
 div.appendChild(divImagemResultado);
 div.appendChild(divBtns);
 
-
+//Adicionando o pop-up ao body
 body.appendChild(div);
 
 document.querySelector("body").appendChild(body);
