@@ -1,42 +1,39 @@
-//aqui eu não mudei nada, só o parâmetro que tava passando
 document.querySelector("button").addEventListener("click", function(){
     mostrarPopup(1);
 })
 
-//aqui eu fiz várias alterações, nome de var, tirei alguns trechos, etc
 function mostrarPopup(elementoJogador){
 
-    //Criando a div que será o nosso body - mantive igual
+    //Criando a div que será o nosso body
     var body = document.createElement("div");
     body.id = "body-popup";
 
-    //Criando a div que vai armazenar tudo - mantive igual
+    //Criando a div que vai armazenar tudo
     var div = document.createElement("div");
     div.id = "div-popup";
 
-    //Criando o label - alterei td
+    //Criando o label
     var divImagemJogador = document.createElement("div");
     divImagemJogador.id = "div-imagem-jogador";
 
     var imgJogador = document.createElement("img");
     imgJogador.id = "img-jogador";
 
-    //Selecionando a imagem correta - alterei as opções 
+    //Selecionando a imagem correta
     switch (elementoJogador) {
         case 1:
-            imgJogador.src = "../../shared/imgs/o.svg";
+            imgJogador.src = "../../shared/imgs/jogadorO.png";
             break;
         case 2:
-            imgJogador.src = "../../shared/imgs/x.svg";
+            imgJogador.src = "../../shared/imgs/jogadorX.png";
             break;
     }
 
-    //Inserindo todos os elementos ao popup - só tirei a div de botões, que a minha não tem
-    // div.appendChild(resultado);
+    //Inserindo todos os elementos ao popup
     divImagemJogador.appendChild(imgJogador);
     div.appendChild(divImagemJogador);
 
-    //Adicionando o pop-up ao body - não alterei nada
+    //Adicionando o pop-up ao body
     body.appendChild(div);
 
     document.querySelector("body").appendChild(body);
