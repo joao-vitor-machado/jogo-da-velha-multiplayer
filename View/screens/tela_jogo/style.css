@@ -57,7 +57,7 @@ tr + tr {
     height: 5rem;
 }
 
-/* CSS para Definir Jogador - não mudei nada, só tirei as partes que >pra mim< não faziam sentido */
+/* CSS para Definir Jogador*/
 
 #body-popup {
     display: flex;

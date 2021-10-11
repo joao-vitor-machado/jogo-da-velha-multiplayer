@@ -1,6 +1,8 @@
-document.querySelector("button").addEventListener("click", function(){
-    mostrarPopup(1);
-})
+window.onload = function() {
+    setTimeout(function(){
+        mostrarPopup(1);
+    }, 1000)
+};
 
 function mostrarPopup(elementoJogador){
 
