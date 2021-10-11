@@ -32,7 +32,7 @@ function mostrarPopup(elementoJogador){
     }
 
     //Inserindo todos os elementos ao popup - só tirei a div de botões, que a minha não tem
-    div.appendChild(resultado);
+    // div.appendChild(resultado);
     divImagemJogador.appendChild(imgJogador);
     div.appendChild(divImagemJogador);
 
