@@ -88,9 +88,14 @@ tr + tr {
 }
 
 #div-imagem-jogador{
-
+    overflow: hidden;
 }
 
 #img-jogador{
     height: 100%;
+    
+    
+}
+body{
+    overflow: hidden;
 }
