@@ -1,8 +1,3 @@
-document.querySelector("button").addEventListener("click", function(){
-    mostrarPopup(0);
-})
-
-
 function mostrarPopup(numeroResultado){
 
 //Criando a div que será o nosso body

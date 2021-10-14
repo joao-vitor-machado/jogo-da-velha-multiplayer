@@ -1,10 +1,10 @@
 window.onload = function() {
     setTimeout(function(){
-        mostrarPopup(1);
+        mostrarJogador(-1);
     }, 1000)
 };
 
-function mostrarPopup(elementoJogador){
+function mostrarJogador(elementoJogador){
 
     //Criando a div que será o nosso body
     var body = document.createElement("div");
@@ -12,7 +12,7 @@ function mostrarPopup(elementoJogador){
 
     //Criando a div que vai armazenar tudo
     var div = document.createElement("div");
-    div.id = "div-popup";
+    div.id = "div-mostrar-jogador";
 
     //Criando o label
     var divImagemJogador = document.createElement("div");
@@ -27,7 +27,7 @@ function mostrarPopup(elementoJogador){
             imgJogador.src = "../../shared/imgs/jogadorO.png";
             imgJogador.style = "width:100vw;";
             break;
-        case 2:
+        case -1:
             imgJogador.src = "../../shared/imgs/jogadorX.png";
             imgJogador.style = "width:100vw;";
             break;
