@@ -14,30 +14,33 @@
         <img src="../../shared/imgs/logo.png" alt="" class="logo-header">
         <div class="player">
             <h1>JOGADOR</h1>
-        <img src="../../shared/imgs/o.svg" alt="jogador-img">
-        <h1>JOGA</h1>
+            <img id="img-id-player" src="../../shared/imgs/x.svg" alt="jogador-img" srcset="" height="150vh">
+            <h1>JOGA</h1>
+            <h2 id="vitoria"></h2>
         </div>
     </header>
     <section>
         <table>
             <tr>
-                <td id="0" onclick="mostrar(0, 0)"></td>
-                <td id="1" onclick="mostrar(0, 1)"></td>
-                <td id="2" onclick="mostrar(0, 2)"></td>
+                <td id="0" onclick="jogada(0, 0)"></td>
+                <td id="1" onclick="jogada(0, 1)"></td>
+                <td id="2" onclick="jogada(0, 2)"></td>
             </tr>
             <tr>
-                <td id="3" onclick="mostrar(1, 0)"></td>
-                <td id="4" onclick="mostrar(1, 1)"></td>
-                <td id="5" onclick="mostrar(1, 2)"></td>
+                <td id="3" onclick="jogada(1, 0)"></td>
+                <td id="4" onclick="jogada(1, 1)"></td>
+                <td id="5" onclick="jogada(1, 2)"></td>
             </tr>
             <tr>
-                <td id="6" onclick="mostrar(2, 0)"></td>
-                <td id="7" onclick="mostrar(2, 1)"></td>
-                <td id="8" onclick="mostrar(2, 2)"></td>
+                <td id="6" onclick="jogada(2, 0)"></td>
+                <td id="7" onclick="jogada(2, 1)"></td>
+                <td id="8" onclick="jogada(2, 2)"></td>
             </tr>
         </table>
-    </section>
 
+        
+
+    </section>
     <div class="button">
         <a href="../index.html">
             <span>Sair</span>
@@ -46,5 +49,6 @@
 
     <script src="./def_jogador.js"></script>
     <script src="./popup.js"></script>
+    <script type="text/javascript" src="../../../Controller/playValidator.js"></script>
 </body>
 </html>
