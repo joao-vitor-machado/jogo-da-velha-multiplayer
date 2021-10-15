@@ -22,9 +22,7 @@ function verificaVencedor(tamanho, incrementoFor, incrementoComparativo) {
             if ((document.getElementById(i).innerHTML == document.getElementById(i + incrementoComparativo).innerHTML) && 
                 (document.getElementById(i).innerHTML == document.getElementById(i + (incrementoComparativo * 2)).innerHTML)) 
             {
-                
-                
-                
+                                
                 if (document.getElementById(i).innerHTML == '<img src="../../shared/imgs/x.svg" style="height: 8rem;">'){
                     mostrarPopup(-1);
                     
@@ -57,14 +55,11 @@ function verificaVencedor(tamanho, incrementoFor, incrementoComparativo) {
     for (var i=0; i<9; i++){
         if (!document.getElementById(i).innerHTML){
             break;
-        } else if (document.getElementById('vitoria').innerHTML){
+        } else if (document.getElementById('body-popup')){
             break;
         } else {      
             velha ++;
             if (velha == 9){
-                // document.getElementById('vitoria').innerHTML= "VELHAAA";
-                // return 0;
-                
                 mostrarPopup(0);    
             }
         }
