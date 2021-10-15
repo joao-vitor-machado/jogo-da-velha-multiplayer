@@ -8,6 +8,9 @@ function addImage(linha, coluna, imagem) {
     var elem_img = linha.getElementsByTagName("td")[coluna];
 
     elem_img = document.createElement('img');
+
+    elem_img.style = "height:8rem";
+
     elem_img.src = imagem;
     linha.getElementsByTagName("td")[coluna].appendChild(elem_img);
 }
@@ -19,11 +22,15 @@ function verificaVencedor(tamanho, incrementoFor, incrementoComparativo) {
             if ((document.getElementById(i).innerHTML == document.getElementById(i + incrementoComparativo).innerHTML) && 
                 (document.getElementById(i).innerHTML == document.getElementById(i + (incrementoComparativo * 2)).innerHTML)) 
             {
-                document.getElementById('vitoria').innerHTML= "Uhuuull Vitória do jogador " + document.getElementById(i).innerHTML;
-                if (document.getElementById(i).innerHTML == '<img src="../../shared/imgs/x.svg">'){
-                    return -1;
-                } else if (document.getElementById(i).innerHTML == '<img src="../../shared/imgs/o.svg">') {
-                    return 1;
+                
+                
+                
+                if (document.getElementById(i).innerHTML == '<img src="../../shared/imgs/x.svg" style="height: 8rem;">'){
+                    mostrarPopup(-1);
+                    
+                } else if (document.getElementById(i).innerHTML == '<img src="../../shared/imgs/o.svg" style="height: 8rem;">') {
+                    mostrarPopup(1);
+                    
                 }
             } 
         }
@@ -34,11 +41,13 @@ function verificaVencedor(tamanho, incrementoFor, incrementoComparativo) {
         if ((document.getElementById(2).innerHTML == document.getElementById(4).innerHTML) && 
             (document.getElementById(2).innerHTML == document.getElementById(6).innerHTML))
         {
-            document.getElementById('vitoria').innerHTML= "Uhuuull Vitória do jogador " + document.getElementById(2).innerHTML;
-            if (document.getElementById(i).innerHTML == '<img src="../../shared/imgs/x.svg">'){
-                return -1;
-            } else if (document.getElementById(i).innerHTML == '<img src="../../shared/imgs/o.svg">') {
-                return 1;
+            
+            if (document.getElementById(2).innerHTML == '<img src="../../shared/imgs/x.svg" style="height: 8rem;">'){
+                mostrarPopup(-1);
+                
+            } else if (document.getElementById(2).innerHTML == '<img src="../../shared/imgs/o.svg" style="height: 8rem;">') {
+                mostrarPopup(1);
+                
             }
         }
     }
@@ -53,8 +62,10 @@ function verificaVencedor(tamanho, incrementoFor, incrementoComparativo) {
         } else {      
             velha ++;
             if (velha == 9){
-                document.getElementById('vitoria').innerHTML= "VELHAAA";
-                return 0;
+                // document.getElementById('vitoria').innerHTML= "VELHAAA";
+                // return 0;
+                
+                mostrarPopup(0);    
             }
         }
     }

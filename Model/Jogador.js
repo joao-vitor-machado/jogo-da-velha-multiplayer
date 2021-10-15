@@ -15,11 +15,14 @@ function verificarJogador() {
         imagemJogador = '../../shared/imgs/x.svg';
         IdentificadorDeJogador.src = '../../shared/imgs/o.svg'; // Adiciona a imagem do player da vez
         
+        
         jogador = 1;  //  Seta "O" como proximo jogador 
     } else if (jogador == 1) {
         imagemJogador = '../../shared/imgs/o.svg';
-        IdentificadorDeJogador.src = '../../shared/imgs/x.svg';
+        IdentificadorDeJogador.src = '../../shared/imgs/x.svg'; // Adiciona a imagem do player da vez
+        
 
-        jogador = -1; // Seta "X" como proximo jogador
+
+        jogador = -1;  //  Seta "O" como proximo jogador 
     }
 }

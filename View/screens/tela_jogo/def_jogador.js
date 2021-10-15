@@ -48,7 +48,7 @@ function mostrarJogador(elementoJogador){
        {transform: 'translateX(-100%)'}
      ], {
         //timing options
-       duration: 6000,
+       duration: 3500,
        fill: "both",
      });
    
@@ -64,6 +64,6 @@ function mostrarJogador(elementoJogador){
     //Retirando o slide do html para acessar o jogo
     setTimeout(function(){
         document.querySelector("body").removeChild(body);
-    }, 6500);
+    }, 4000);
 
 }
