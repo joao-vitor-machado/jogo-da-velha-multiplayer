@@ -7,8 +7,9 @@
   },
   "author": "",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "ws": "^8.2.3"
-  }
+  },
+  "devDependencies": {},
+  "description": ""
 }
