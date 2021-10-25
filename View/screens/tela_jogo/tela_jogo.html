@@ -24,19 +24,19 @@
     <section>
         <table>
             <tr>
-                <td id="0" onclick="jogada(0, 0)"></td>
-                <td id="1" onclick="jogada(0, 1)"></td>
-                <td id="2" onclick="jogada(0, 2)"></td>
+                <td id="0" ></td>
+                <td id="1" ></td>
+                <td id="2" ></td>
             </tr>
             <tr>
-                <td id="3" onclick="jogada(1, 0)"></td>
-                <td id="4" onclick="jogada(1, 1)"></td>
-                <td id="5" onclick="jogada(1, 2)"></td>
+                <td id="3" ></td>
+                <td id="4" ></td>
+                <td id="5" ></td>
             </tr>
             <tr>
-                <td id="6" onclick="jogada(2, 0)"></td>
-                <td id="7" onclick="jogada(2, 1)"></td>
-                <td id="8" onclick="jogada(2, 2)"></td>
+                <td id="6" ></td>
+                <td id="7" ></td>
+                <td id="8" ></td>
             </tr>
         </table>
 
@@ -57,10 +57,12 @@
         const ws = new WebSocket("ws://localhost:7890");
 
         ws.addEventListener("open", () => {
+
             var celulas = document.querySelectorAll("section table tr td");
             celulas.forEach(celula => {
+
                 celula.addEventListener("click", () => {
-                    ({ linha, coluna } = verificarPosicao(parseInt(celula.id)));
+                    ({ linha, coluna } = posicaoToObj(parseInt(celula.id)));
                     ws.send(
                         JSON.stringify({
                             linha: linha,
@@ -69,6 +71,20 @@
                     )
                 })
             });
+
+            ws.addEventListener("message", message => {
+                json = message.data;
+                mensagem = JSON.parse(json);
+                console.log(mensagem)
+                if(mensagem.resultado){
+                    console.log(mensagem.resultado)
+                    mostrarPopup(parseInt(mensagem.resultado));
+                }else if(mensagem.linha != null && mensagem.coluna != null && mensagem.jogador != null){   
+                    jogada(mensagem.linha, mensagem.coluna, mensagem.jogador);
+                }else if(mensagem.jogadorInicial){
+                    verificarJogador(mensagem.jogadorInicial);
+                }
+            })
         })
     </script>
 </body>

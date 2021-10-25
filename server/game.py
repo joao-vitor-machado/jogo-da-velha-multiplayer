@@ -24,10 +24,11 @@ class Tabuleiro:
             self.tabuleiro[linha][coluna] = 1
 
         self.contador_de_jogada+=1
-        print(self.verificarVencedor())
+        
+        return self.verificarVencedor()
 
     def verificarVencedor(self):
-        print(self.tabuleiro)
+        
         #Primeira linha
         soma = 0
         for i in range(3):
@@ -98,7 +99,10 @@ class Tabuleiro:
         elif soma == -3:
             return -1
 
-        return 0
+        if self.contador_de_jogada == 9:
+            return 0
+
+        return 100
 
 
     def resetTabuleiro(self):

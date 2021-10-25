@@ -12,14 +12,43 @@ print("Starteed server and it's listening on port " + str(PORT))
 connected = set()
 tabuleiro = Tabuleiro()
 
+async def enviarRetorno(connected, celula_formatada):
+    retorno = tabuleiro.efetuarJogada(celula_formatada["linha"], celula_formatada["coluna"])
+    print(retorno)
+    if retorno == 1:
+         for conn in connected:
+            await conn.send(json.dumps({
+                'resultado': "1" # O
+            }))
+    if retorno == -1:
+         for conn in connected:
+            await conn.send(json.dumps({
+                'resultado': "-1" # X
+            }))
+    if retorno == 0:
+         for conn in connected:
+            await conn.send(json.dumps({
+                'resultado': "0" # empate
+            }))
+    if retorno == 100:
+        for conn in connected:
+            await conn.send(json.dumps({
+                'linha': celula_formatada["linha"],
+                'coluna': celula_formatada["coluna"],
+                'jogador': -1 if tabuleiro.contador_de_jogada % 2 == 0 else 1 # está "ao contrário" porque a ideia é que o JSON passe quem vai fazer A PRÓXIMA jogada
+            }))
+
 async def echo(websocket, path):
     print("A client just connected")
-    
     connected.add(websocket)
+    # for conn in connected:
+    #     await conn.send(json.dumps({
+    #         'jogadorInicial':-1
+    #     }))
     try:
         async for celula in websocket:
             celula_formatada = json.loads(celula)
-            tabuleiro.efetuarJogada(celula_formatada["linha"], celula_formatada["coluna"])
+            await enviarRetorno(connected, celula_formatada)
             for conn in connected:
                 if conn != websocket:
                     await conn.send("Someone said: " + celula_formatada)
