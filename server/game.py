@@ -7,13 +7,13 @@ class Tabuleiro:
             ]
         self.contador_de_jogada = 0
         
-    def verificar_posicao(self, linha, coluna):
+    def verificar_posicao(self, linha, coluna): #verifica se a posição está ocupada
         if self.tabuleiro[linha][coluna] != 0:
             return 1
         else:
             return 0
 
-    def efetuarJogada(self, linha, coluna):
+    def efetuarJogada(self, linha, coluna): # efetua a jogada caso a posição não esteja ocupada
         
         if self.verificar_posicao(linha, coluna) == 1:
             print("Célula ocupada")
@@ -25,7 +25,7 @@ class Tabuleiro:
 
         self.contador_de_jogada+=1
         
-        return self.verificarVencedor()
+        return self.verificarVencedor() # esse é o retorno que está lá no server
 
     def verificarVencedor(self):
         
@@ -102,10 +102,10 @@ class Tabuleiro:
         if self.contador_de_jogada == 9:
             return 0
 
-        return 100
+        return 100 # caso o jogo deva continuar
 
 
-    def resetTabuleiro(self):
+    def resetTabuleiro(self): # ainda estou trabalhando nisso
         self.tabuleiro = [
                 [0,0,0],
                 [0,0,0],

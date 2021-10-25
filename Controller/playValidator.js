@@ -71,8 +71,8 @@ function jogada(linha, coluna, jogador){
     var linhaTabela = document.getElementsByTagName("tr")[linha]; // Recupera a linha da jogada
     linhaTabela.getElementsByTagName("td")[coluna].style.pointerEvents = 'none'; // Bloqueia a [linha, coluna] para impossibilitar novos cliques
 
-    verificarProximoJogador(jogador);
-    this.addImage(linhaTabela, coluna, verificarJogador(jogador));
+    verificarProximoJogador(jogador); // muda a imagem do canto superior direito 
+    this.addImage(linhaTabela, coluna, verificarJogador(jogador)); // insere a imagem no tabuleiro
     
     var jogadorVitorioso = 0;
     // this.verificaVencedor(8, 3, 1); // Compara se a LINHA foi fechada

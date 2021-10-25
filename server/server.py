@@ -13,24 +13,24 @@ connected = set()
 tabuleiro = Tabuleiro()
 
 async def enviarRetorno(connected, celula_formatada):
-    retorno = tabuleiro.efetuarJogada(celula_formatada["linha"], celula_formatada["coluna"])
+    retorno = tabuleiro.efetuarJogada(celula_formatada["linha"], celula_formatada["coluna"]) # retorna o código do resultado 
     print(retorno)
-    if retorno == 1:
+    if retorno == 1: 
          for conn in connected:
             await conn.send(json.dumps({
-                'resultado': "1" # O
+                'resultado': "1" # vitória do O
             }))
     if retorno == -1:
          for conn in connected:
             await conn.send(json.dumps({
-                'resultado': "-1" # X
+                'resultado': "-1" # vitória do X
             }))
     if retorno == 0:
          for conn in connected:
             await conn.send(json.dumps({
                 'resultado': "0" # empate
             }))
-    if retorno == 100:
+    if retorno == 100: #caso do jogo não ter acabado ainda
         for conn in connected:
             await conn.send(json.dumps({
                 'linha': celula_formatada["linha"],
@@ -46,10 +46,10 @@ async def echo(websocket, path):
     #         'jogadorInicial':-1
     #     }))
     try:
-        async for celula in websocket:
-            celula_formatada = json.loads(celula)
+        async for celula in websocket: # tratamento das requisições recebidas
+            celula_formatada = json.loads(celula) #desempacota do JSON para um objeto
             await enviarRetorno(connected, celula_formatada)
-            for conn in connected:
+            for conn in connected: #parte do broadcast 
                 if conn != websocket:
                     await conn.send("Someone said: " + celula_formatada)
     except websockets.exceptions.ConnectionClosed as e:
