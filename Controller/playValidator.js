@@ -79,3 +79,29 @@ function jogada(linha, coluna){
     this.verificaVencedor(2, 1, 3); // Compara se a COLUNA foi fechada
     this.verificaVencedor(0, 1, 4); // Compara se a DIAGONAL PRINCIPAL foi fechada 
 }
+
+function verificarPosicao(id){
+    switch (id) {
+        case 0:
+            return ({linha: 0, coluna: 0});
+        case 1:
+            return ({linha: 0, coluna: 1});
+        case 2:
+            return ({linha: 0, coluna: 2});
+        case 3:
+            return ({linha: 1, coluna: 0});
+        case 4:
+            return ({linha: 1, coluna: 1});
+        case 5:
+            return ({linha: 1, coluna: 2});
+        case 6:
+            return ({linha: 2, coluna: 0});
+        case 7:
+            return ({linha: 2, coluna: 1});
+        case 8:
+            return ({linha: 2, coluna: 2});
+        default:
+            console.log("um erro ocorreu no parsing da célula html para os dados JSON")
+            break;
+    }
+}

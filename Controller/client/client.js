@@ -4,6 +4,9 @@ const WebSocket = require('ws');
 const client = new WebSocket("ws://localhost:7890");
 
 client.addEventListener("open", e => {
+
+    console.log("estou rodando");
+
     client.send(
         JSON.stringify({
                      linha: "linha",
@@ -16,3 +19,5 @@ client.addEventListener("open", e => {
         console.log(msgm);
     }
 })
+
+module.exports = client;

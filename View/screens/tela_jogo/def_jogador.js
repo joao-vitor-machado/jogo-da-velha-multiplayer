@@ -1,5 +1,7 @@
+
 window.onload = function() {
     setTimeout(function(){
+
         mostrarJogador(-1);
     }, 1000)
 };

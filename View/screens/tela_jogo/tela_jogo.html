@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,6 +10,7 @@
     <link rel="stylesheet" href="./style.css">
     <title>Tela de Jogo</title>
 </head>
+
 <body>
     <header>
         <img src="../../shared/imgs/logo.png" alt="" class="logo-header">
@@ -38,7 +40,7 @@
             </tr>
         </table>
 
-        
+
 
     </section>
     <div class="button">
@@ -49,6 +51,26 @@
 
     <script src="./def_jogador.js"></script>
     <script src="./popup.js"></script>
-    <script type="text/javascript" src="../../../Controller/playValidator.js"></script>
+    <script src="../../../Controller/playValidator.js"></script>
+    
+    <script>
+        const ws = new WebSocket("ws://localhost:7890");
+
+        ws.addEventListener("open", () => {
+            var celulas = document.querySelectorAll("section table tr td");
+            celulas.forEach(celula => {
+                celula.addEventListener("click", () => {
+                    ({ linha, coluna } = verificarPosicao(parseInt(celula.id)));
+                    ws.send(
+                        JSON.stringify({
+                            linha: linha,
+                            coluna: coluna
+                        })
+                    )
+                })
+            });
+        })
+    </script>
 </body>
+
 </html>
