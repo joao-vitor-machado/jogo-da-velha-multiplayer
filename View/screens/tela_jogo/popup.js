@@ -43,6 +43,13 @@ switch (numeroResultado) {
  var botaoSair = document.createElement("div");
  botaoJogarNovamente.className = "button";
  botaoSair.className = "button";
+ botaoJogarNovamente.addEventListener("click", ()=>{
+     ws.close();
+ })
+
+ botaoSair.addEventListener("click", ()=>{
+    ws.close();
+})
 
  //Montando o botão de sair do jogo e fazendo as alterações CSS
  var a = document.createElement("a");

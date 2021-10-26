@@ -40,7 +40,12 @@ async def enviarRetorno(connected, celula_formatada):
 
 async def echo(websocket, path):
     print("A client just connected")
-    connected.add(websocket)
+    if len(connected) < 2:
+        connected.add(websocket)
+    else:    
+        await websocket.close()
+        print("Limite de players atingido")
+        
     # for conn in connected:
     #     await conn.send(json.dumps({
     #         'jogadorInicial':-1
@@ -51,12 +56,15 @@ async def echo(websocket, path):
             await enviarRetorno(connected, celula_formatada)
             for conn in connected: #parte do broadcast 
                 if conn != websocket:
-                    await conn.send("Someone said: " + celula_formatada)
+                    await conn.send(celula)
     except websockets.exceptions.ConnectionClosed as e:
         tabuleiro.resetTabuleiro()
         print("A client just disconnected")
     finally:
-        connected.remove(websocket)
+        try:
+            connected.remove(websocket)
+        except:
+            print("nenhuma conexão para eliminar")
         
 start_server = websockets.serve(echo, "localhost", PORT)
 

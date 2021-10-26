@@ -43,14 +43,13 @@
 
 
     </section>
-    <div class="button">
+    <div class="button button-close-conec">
         <a href="../index.html">
             <span>Sair</span>
         </a>
     </div>
 
     <script src="./def_jogador.js"></script>
-    <script src="./popup.js"></script>
     <script src="../../../Controller/playValidator.js"></script>
     
     <script>
@@ -72,6 +71,14 @@
                 })
             });
 
+            var botoesFecharSessao = document.querySelectorAll(".button-close-conec");
+            botoesFecharSessao.forEach(btn => {
+                btn.addEventListener("click", ()=>{
+                ws.close();
+            });
+            });
+
+            
             ws.addEventListener("message", message => { // define o que acontece quando o computador recebe uma mensagem do server 
                 json = message.data;
                 mensagem = JSON.parse(json); // transforma o json em um obj
@@ -90,6 +97,8 @@
             })
         })
     </script>
+
+    <script src="./popup.js"></script>
 </body>
 
 </html>
