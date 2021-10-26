@@ -44,10 +44,20 @@ switch (numeroResultado) {
  botaoJogarNovamente.className = "button";
  botaoSair.className = "button";
  botaoJogarNovamente.addEventListener("click", ()=>{
-     ws.close();
+     ws.send(
+         JSON.stringify({
+             jogarNovamente: true
+         })
+     );
+
  })
 
  botaoSair.addEventListener("click", ()=>{
+    ws.send(
+        JSON.stringify({
+            jogarNovamente: false
+        })
+    )
     ws.close();
 })
 
@@ -63,7 +73,7 @@ switch (numeroResultado) {
 //Montando o botão de Jogar Novamente e fazendo as alterações CSS
  var a2 = document.createElement("a");
  var span2 = document.createElement("span");
- a2.href = "./tela_jogo.html";
+//  a2.href = "./tela_jogo.html";
  a2.style = "width: 300px; height: 100px"
  span2.textContent = "Jogar Novamente";
  span2.style = "text-align: center;";

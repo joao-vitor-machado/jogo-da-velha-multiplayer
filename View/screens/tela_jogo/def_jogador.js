@@ -1,11 +1,3 @@
-
-window.onload = function() {
-    setTimeout(function(){
-
-        mostrarJogador(-1);
-    }, 1000)
-};
-
 function mostrarJogador(elementoJogador){
 
     //Criando a div que será o nosso body

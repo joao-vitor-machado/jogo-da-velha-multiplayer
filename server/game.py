@@ -6,6 +6,8 @@ class Tabuleiro:
                 [0,0,0]
             ]
         self.contador_de_jogada = 0
+        self.jogar_novamente = []
+        self.jogadores = [-1, 1] # O e X
         
     def verificar_posicao(self, linha, coluna): #verifica se a posição está ocupada
         if self.tabuleiro[linha][coluna] != 0:
@@ -112,3 +114,4 @@ class Tabuleiro:
                 [0,0,0]
             ]
         self.contador_de_jogada = 0
+        self.jogar_novamente.clear()

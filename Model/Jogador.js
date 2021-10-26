@@ -1,6 +1,12 @@
 //Armazenar a classe jogador e instanciar dois obejtos (jogadorX e jogadorO)
 // Apenas os atributos e getters e setters
 
+class Jogador{
+    constructor(numJogador){
+        this.jogador = numJogador;
+    }
+}
+
 /* Logica do jogador ====
 se 1 então O
 se -1 então X
