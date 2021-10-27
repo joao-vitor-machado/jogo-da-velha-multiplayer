@@ -1,23 +1,52 @@
+const ws = new WebSocket("ws://localhost:7890");
 
-const WebSocket = require('ws');
+        ws.addEventListener("open", () => { //ao abrir a conexão o código abaixo será executado
 
-const client = new WebSocket("ws://localhost:7890");
+            var celulas = document.querySelectorAll("section table tr td");
+            celulas.forEach(celula => {
+                //adiciona um eventListener para cada uma das células
+                celula.addEventListener("click", () => {
+                    ({ linha, coluna } = posicaoToObj(parseInt(celula.id))); // transforma em obj
+                    ws.send( // transforma em JSON e envia pro server
+                        JSON.stringify({
+                            linha: linha,
+                            coluna: coluna,
+                            jogadorResponsavel: jogador.jogador
+                        })
+                    )
+                })
+            });
 
-client.addEventListener("open", e => {
+            var botoesFecharSessao = document.querySelectorAll(".button-close-conec");
+            botoesFecharSessao.forEach(btn => {
+                btn.addEventListener("click", ()=>{
+                ws.close();
+            });
+            });
 
-    console.log("estou rodando");
+            
+            ws.addEventListener("message", message => { // define o que acontece quando o computador recebe uma mensagem do server 
+                json = message.data;
+                mensagem = JSON.parse(json); // transforma o json em um obj
 
-    client.send(
-        JSON.stringify({
-                     linha: "linha",
-                     coluna: "coluna"
-                 })
-    );
+                console.log(mensagem)
 
-    client.onmessage = function(event){
-        msgm = event.data
-        console.log(msgm);
-    }
-})
-
-module.exports = client;
+                if(mensagem.resultado){ // se o objeto tiver apenas uma propriedade resultado
+                    console.log(mensagem.resultado)
+                    mostrarPopup(parseInt(mensagem.resultado));
+                }else if(mensagem.linha != null && mensagem.coluna != null && mensagem.jogador != null) // se o objeto tiver linha, coluna e jogador diferentes de null, ele efetua a jogada
+                {   
+                    jogada(mensagem.linha, mensagem.coluna, mensagem.jogador);
+                }else if(mensagem.jogador){ // ainda está sendo trabalhado
+                    jogador = new Jogador(mensagem.jogador);
+                    mostrarJogador(mensagem.jogador);
+                }else if(mensagem.jogarNovamente != null){ // em construçao
+                    if(mensagem.jogarNovamente == true){
+                        location.reload();
+                        console.log("aqui")
+                    }else{
+                        location.replace("../index.html");
+                    }
+                }
+            })
+        })
