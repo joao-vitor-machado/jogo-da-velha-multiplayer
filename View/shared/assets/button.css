@@ -1,0 +1,74 @@
+.button {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    margin-bottom: 3rem;
+
+}
+
+.button a {
+    position: relative;
+    width: 15rem;
+    height: 7rem;
+    display: inline-block;
+    background: rgba(255, 255, 255, 0);
+}
+
+.button a:before,
+.button a:after
+{
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: #f00;
+    transition: 0.5s;
+}
+.button a:nth-child(1):before,
+.button a:nth-child(1):after
+{
+    background: linear-gradient(135deg, #ff9900, #0e1538, #0e1538, #d400d4);
+}
+.button a:nth-child(2):before,
+.button a:nth-child(2):after
+{
+    background: linear-gradient(45deg, #ff075b, #0e1538, #0e1538, #1aff22);
+}
+.button a:hover:before
+{
+    inset: -2.5px;
+}
+.button a:hover:after
+{
+    inset: -2.5px;
+    filter: blur(10px);
+}
+.button a span
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    background: #0e1538;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    letter-spacing: 1.5px;
+    color: #8d008d;
+    border: 1px solid #040a29;
+    overflow: hidden;
+}
+.button a span::before
+{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.025);
+    transform: skew(25deg);
+}
